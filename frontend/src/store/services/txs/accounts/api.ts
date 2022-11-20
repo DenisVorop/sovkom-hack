@@ -25,7 +25,7 @@ export const accountsApi = createApi({
                     }
                 },
                 providesTags: ['Accounts'],
-                transformResponse: (response: { content: TAccount[][] }) => response.content[0],
+                transformResponse: (response: { content: TAccount[] }) => response.content,
             }),
             invoice: build.query<any, any>({
                 query() {
