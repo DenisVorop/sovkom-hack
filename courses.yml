@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+# api
+  sovcombank_courses:
+    container_name: sovcombank_courses
+    build:
+      context: ./courses_api/app/
+      dockerfile: ../../dockers/python/Dockerfile
+    #command: /bin/bash -c "python -m pip install -r /app/requirements.txt --no-cache-dir && python api.py"
+    command: /bin/bash -c "python api.py"
+    restart: unless-stopped
+    ports:
+      - "3200:3000"
+    env_file:
+      - .env
+      - ./courses_api/app/.env
+    working_dir: /app
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "1"
+    volumes:
+      - ./courses_api/app/:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    #external: true

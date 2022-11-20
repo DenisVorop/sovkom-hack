@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+
+
+
+# api
+  sovcombank_frontend:
+    #image: 16.18
+    image: node:16.18-alpine3.15
+    container_name: sovcombank_frontend
+    # build:
+    #   context: ./apps/otherlangs/node/natural
+    #   dockerfile: ../../../../dockers/node/Dockerfile
+    env_file:
+      - .env
+      #- ./app/.env
+    #command: npm i && node index2.js
+    command: sh -c "cd /app && npm i && npm start"
+    restart: unless-stopped
+    # ports:
+    #   - "3001:3000"
+#    depends_on:
+#      - mysql
+#      - postgres
+    working_dir: /app
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "1"
+    volumes:
+      - ./frontend:/app
+    network_mode: host
+    # networks:
+    #   - app-network
+    # - extarnal-service_network
+
+# networks:
+#   app-network:
+#     driver: bridge
+
+

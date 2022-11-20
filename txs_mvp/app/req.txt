@@ -1,0 +1,15 @@
+asyncio
+sanic
+sanic-cors
+
+pydantic
+sanic_pydantic
+
+
+asyncpg 
+
+pytz
+requests
+httpx
+
+xmltodict

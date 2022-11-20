@@ -1,0 +1,9 @@
+**/venv
+**/__pycache__
+**/.venv
+**/dbdata
+**/_.env**
+**/dumps
+**/.~lock.**
+**/.idea**
+tests

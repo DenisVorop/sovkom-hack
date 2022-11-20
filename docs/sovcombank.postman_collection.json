@@ -1,0 +1,1974 @@
+{
+	"info": {
+		"_postman_id": "bc8f324c-d5a3-4df3-8df8-bb37ec53d888",
+		"name": "sovcombank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23758491"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "list_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"unapproved\": true\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/admin/list_users",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"list_users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve_user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\":\"test@test.ru\"\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/admin/approve_user",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"approve_user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ban_user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0M0B0ZXN0LnJ1IiwiZXhwIjoxNjY4ODgxNTY2fQ.qDXbk9r-WhDUHsD0quURlei3psrWP7wnh8MqLBktvg0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"test@test.ru\",\n    \"unban\":false\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/admin/user_ban",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user_ban"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list_withdraws",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"only_not_confirmed\": true\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/admin/list_withdraw",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"list_withdraw"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve_withdraw",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_withdraw\":\"23werwerr\"\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/admin/approve_user",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"approve_user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"test@test.ru\",\n\t\"password\": \"test\",\n    \"is_admin\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/register",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "approve_email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/approve_email?email=test@test.ru",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"approve_email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test@test.ru"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test@test.ru",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/login",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh_data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{refresh_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/refresh_data",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"refresh_data"
+							]
+						},
+						"description": "передается Refresh Token в  \n  \nBearer Token в Authorization"
+					},
+					"response": [
+						{
+							"name": "refresh_data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/refresh_data",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"refresh_data"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Incorrect username or password\"\n}"
+						},
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/refresh_data",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"refresh_data"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg4NzU4NDh9.wJR5MtwZz7wVsIHo4l5-4TJhiPJoouXGgxDXpnBCdzI\",\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJlNWYzOTQ1Yy1kMDE3LTQ0OGEtYjVlYS04YTBkYjJkOTA2NTUiLCJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2NjkxMzMyNDh9.iX1eGuyfX5yN6RVMNcduy5TIie_CqRubGqYI_t36lp8\",\n    \"token_type\": \"bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{TOKEN}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg4NzU0MjV9.wVt7seyjiZXtbib7uMDsYowy-pdUDKG9vPF77ckgAOo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/users/me",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{TOKEN}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg4NzU0MjV9.wVt7seyjiZXtbib7uMDsYowy-pdUDKG9vPF77ckgAOo",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://{{host}}{{auth_port}}/api/users/me",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{auth_port}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"3f732da9-bd6a-40a1-8f99-1620ce3cc556\",\n    \"username\": \"test@test.ru\",\n    \"userdata\": null,\n    \"email_virified\": false,\n    \"approved_by_admin\": null,\n    \"is_admin\": false,\n    \"ban\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/logout",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						},
+						"description": "Удаляет рефреш токен\n\naccess_token держится 1 мин"
+					},
+					"response": []
+				},
+				{
+					"name": "forgot_password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"test@test.ru\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/forgot_password",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"forgot_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restore_password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/restore_password?email=111111123123",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"restore_password"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "111111123123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"new_password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}{{auth_port}}/api/change_password",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{auth_port}}"
+							],
+							"path": [
+								"api",
+								"change_password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "txs",
+			"item": [
+				{
+					"name": "accounts",
+					"item": [
+						{
+							"name": "new_account",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg5Mjc2MDh9.zp1uQuiuCJS1tY__H-mxP3Pucu5yoSxkWZ6Xhpsl5LA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ticket\": \"USD\",\n    \"type\":\"cent\",\n    \"leverage\": 500\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{txs_port}}/api/account/new",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{txs_port}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"new"
+									]
+								},
+								"description": "type = cent # $0.01  \ntype = any # 1"
+							},
+							"response": [
+								{
+									"name": "new_account",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "12312313123",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ticket\": \"USD\",\n    \"type\":\"cent\",\n    \"leverage\": 500\n}   ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3200/api/account/new",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3200",
+											"path": [
+												"api",
+												"account",
+												"new"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"id_account\": 1\n}"
+								}
+							]
+						},
+						{
+							"name": "(service) first_account",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_user\":\"f333f435-04b1-4e52-a9a3-0d0b5fa73de7\"\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{txs_port}}/api/service/account/first",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{txs_port}}"
+									],
+									"path": [
+										"api",
+										"service",
+										"account",
+										"first"
+									]
+								},
+								"description": "type = cent # $0.01  \ntype = any # 1"
+							},
+							"response": [
+								{
+									"name": "new_account",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "12312313123",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ticket\": \"USD\",\n    \"type\":\"cent\",\n    \"leverage\": 500\n}   ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3200/api/account/new",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3200",
+											"path": [
+												"api",
+												"account",
+												"new"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"id_account\": 1\n}"
+								}
+							]
+						},
+						{
+							"name": "del_account",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg5MjI2NTR9.zAD5Nquakp-jImgc2bd7V5ICfLW6URsBqlCEkXDpSgU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_account\": 19\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{txs_port}}/api/account/del",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{txs_port}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"del"
+									]
+								},
+								"description": "type = cent # $0.01  \ntype = any # 1"
+							},
+							"response": [
+								{
+									"name": "new_account",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "12312313123",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ticket\": \"USD\",\n    \"type\":\"cent\",\n    \"leverage\": 500\n}   ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3200/api/account/new",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3200",
+											"path": [
+												"api",
+												"account",
+												"new"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"id_account\": 1\n}"
+								}
+							]
+						},
+						{
+							"name": "user_accounts_iist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg5MjI2NTR9.zAD5Nquakp-jImgc2bd7V5ICfLW6URsBqlCEkXDpSgU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}{{txs_port}}/api/account/list",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{txs_port}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "user_accounts",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "12312313123",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3200/api/user_accounts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3200",
+											"path": [
+												"api",
+												"user_accounts"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"content\": [\n        {\"id\": 1, \"hash\":\"erferg\", \"date_created\":\"2022-22-01\", \"ticket\": \"USD\", \"type\": \"cent\", \"leverage\": 500, \"balance\": 0, \"transactions\":0 }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "invoice",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg5MjQ4MjF9.Brq38GuicHXMRRCW2ah6TPsSG1I75jMkDDJVQHBIkHA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"card\",\n    \"amount\": 1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{txs_port}}/api/account/invoice",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{txs_port}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"invoice"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "card_invoice",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "12312313123",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3200/api/account/invoice",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3200",
+											"path": [
+												"api",
+												"account",
+												"invoice"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"url_invoice\": \"https://redirect?callback=\",\n    \"url_callback\": \"https://approve_invoice?status=ok&hash=\",\n    \"hash\": \"3t4t43t43t43t4\"\n}"
+								}
+							]
+						},
+						{
+							"name": "approve_invoice",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_account\": 1,\n    \"amount\": 1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{txs_port}}/api/account/approve_invoice?status=success&hash=2343423432432",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{txs_port}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"approve_invoice"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "success"
+										},
+										{
+											"key": "hash",
+											"value": "2343423432432"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transfer",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"from_account\": \"23423424234\",\n    \"to_account\":\"23423423432432\"\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{txs_port}}/api/account/transfer",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{txs_port}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"transfer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "12312313123",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"from_account\": \"23423424234\",\n    \"to_account\":\"23423423432432\"\n}   ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3200/api/account/transfer",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3200",
+											"path": [
+												"api",
+												"account",
+												"transfer"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\"succes\": 1}"
+								},
+								{
+									"name": "fail",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"from_account\": \"werwerwer\",\n    \"to_account\":\"werwerwer\"\n}   ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://{{host}}{{port}}/api/transfer",
+											"protocol": "http",
+											"host": [
+												"{{host}}{{port}}"
+											],
+											"path": [
+												"api",
+												"transfer"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"error\": 1,\n    \"desc\": \"some_error\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "new_transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg5MjY0MzR9.U6Jc6nH8M1rt5I-au50A4jOjDqbUWL303fEcz3duuOg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_account\": 21,\n    \"ticket_from\":\"USD\",\n    \"ticket_to\":\"JPY\",\n    \"action\":\"buy\",\n    \"instrument\": \"market\",\n    \"amount\": 10,\n    \"client_open_value\": 1.111,\n    \"client_close_value\": 1.13,\n    \"status\": \"new\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}{{txs_port}}/api/transaction/new",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{txs_port}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account_transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg5MjkxOTZ9.sT7LWXaZGIDe9vLLf3Z6fL3AQeOoYjsxRtsKJ6wRkQI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_account\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}{{txs_port}}/api/transactions/list",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{txs_port}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"list"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user_transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_account\": 1,\n    \"is_open\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3200/api/user_transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"api",
+										"user_transactions"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"content\":[{\n        \"id\": 1,\n        \"direction\":\"USDJPY\",\n        \"action\": \"buy\",\n        \"instrument\": \"market\",\n        \"amount\": 10,\n        \"leverage\": 500,\n        \"client_open_value\": 1.11111,\n        \"backand_open_value\": 1.11112,\n        \"client_close_value\": 1.11111,\n        \"backand_close_value\": 1.11112,\n        \"status\": \"closed\",\n        \"timestamp_open\": 123123123123,\n        \"timestamp_close\": 123123123123\n    }]\n}"
+						}
+					]
+				},
+				{
+					"name": "all_user_transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QHRlc3QucnUiLCJleHAiOjE2Njg5MjkxOTZ9.sT7LWXaZGIDe9vLLf3Z6fL3AQeOoYjsxRtsKJ6wRkQI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_account\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}{{txs_port}}/api/transactions/all",
+							"protocol": "http",
+							"host": [
+								"{{host}}{{txs_port}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user_transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id_account\": 1,\n    \"is_open\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3200/api/user_transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"api",
+										"user_transactions"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"content\":[{\n        \"id\": 1,\n        \"direction\":\"USDJPY\",\n        \"action\": \"buy\",\n        \"instrument\": \"market\",\n        \"amount\": 10,\n        \"leverage\": 500,\n        \"client_open_value\": 1.11111,\n        \"backand_open_value\": 1.11112,\n        \"client_close_value\": 1.11111,\n        \"backand_close_value\": 1.11112,\n        \"status\": \"closed\",\n        \"timestamp_open\": 123123123123,\n        \"timestamp_close\": 123123123123\n    }]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "couses_graph",
+			"item": [
+				{
+					"name": "service",
+					"item": [
+						{
+							"name": "source",
+							"item": [
+								{
+									"name": "live_apilayer_currency_data",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "apikey",
+												"value": "{{API_KEY_apilayer}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://api.apilayer.com/currency_data/live?base=USD&symbols=EUR,GBP",
+											"protocol": "https",
+											"host": [
+												"api",
+												"apilayer",
+												"com"
+											],
+											"path": [
+												"currency_data",
+												"live"
+											],
+											"query": [
+												{
+													"key": "base",
+													"value": "USD"
+												},
+												{
+													"key": "symbols",
+													"value": "EUR,GBP"
+												}
+											]
+										},
+										"description": "[https://apilayer.com/marketplace/currency_data-api](https://apilayer.com/marketplace/currency_data-api)"
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "token",
+														"value": "12312313123",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"from_account\": \"23423424234\",\n    \"to_account\":\"23423423432432\"\n}   ",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://api.apilayer.com/currency_data/live?base=USD&symbols=EUR,GBP",
+													"protocol": "https",
+													"host": [
+														"api",
+														"apilayer",
+														"com"
+													],
+													"path": [
+														"currency_data",
+														"live"
+													],
+													"query": [
+														{
+															"key": "base",
+															"value": "USD"
+														},
+														{
+															"key": "symbols",
+															"value": "EUR,GBP"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\n    \"success\": true,\n    \"timestamp\": 1668895143,\n    \"source\": \"USD\",\n    \"quotes\": {\n        \"USDAED\": 3.673042,\n        \"USDAFN\": 88.000368,\n        \"USDALL\": 113.250403,\n        \"USDAMD\": 395.176682,\n        \"USDANG\": 1.80077,\n        \"USDAOA\": 511.14255,\n        \"USDARS\": 162.843748,\n        \"USDAUD\": 1.49815,\n        \"USDAWG\": 1.8,\n        \"USDAZN\": 1.70397,\n        \"USDBAM\": 1.88521,\n        \"USDBBD\": 2.017466,\n        \"USDBDT\": 102.96955,\n        \"USDBGN\": 1.894804,\n        \"USDBHD\": 0.376324,\n        \"USDBIF\": 2053,\n        \"USDBMD\": 1,\n        \"USDBND\": 1.371755,\n        \"USDBOB\": 6.904496,\n        \"USDBRL\": 5.382804,\n        \"USDBSD\": 0.9992,\n        \"USDBTC\": 6.0027301e-05,\n        \"USDBTN\": 81.609643,\n        \"USDBWP\": 12.943297,\n        \"USDBYN\": 2.523567,\n        \"USDBYR\": 19600,\n        \"USDBZD\": 2.014092,\n        \"USDCAD\": 1.34095,\n        \"USDCDF\": 2044.000362,\n        \"USDCHF\": 0.954788,\n        \"USDCLF\": 0.034132,\n        \"USDCLP\": 941.803912,\n        \"USDCNY\": 7.119904,\n        \"USDCOP\": 4988.83,\n        \"USDCRC\": 610.040099,\n        \"USDCUC\": 1,\n        \"USDCUP\": 26.5,\n        \"USDCVE\": 106.850394,\n        \"USDCZK\": 23.58504,\n        \"USDDJF\": 177.720394,\n        \"USDDKK\": 7.204504,\n        \"USDDOP\": 54.503886,\n        \"USDDZD\": 139.05404,\n        \"USDEGP\": 24.564013,\n        \"USDERN\": 15,\n        \"USDETB\": 52.970392,\n        \"USDEUR\": 0.966604,\n        \"USDFJD\": 2.23075,\n        \"USDFKP\": 0.840337,\n        \"USDGBP\": 0.841149,\n        \"USDGEL\": 2.720391,\n        \"USDGGP\": 0.840337,\n        \"USDGHS\": 14.503858,\n        \"USDGIP\": 0.840337,\n        \"USDGMD\": 61.503853,\n        \"USDGNF\": 8775.000355,\n        \"USDGTQ\": 7.801763,\n        \"USDGYD\": 209.049024,\n        \"USDHKD\": 7.82195,\n        \"USDHNL\": 24.850389,\n        \"USDHRK\": 7.275304,\n        \"USDHTG\": 137.891348,\n        \"USDHUF\": 393.740388,\n        \"USDIDR\": 15641.4,\n        \"USDILS\": 3.466604,\n        \"USDIMP\": 0.840337,\n        \"USDINR\": 81.52015,\n        \"USDIQD\": 1460,\n        \"USDIRR\": 42400.000352,\n        \"USDISK\": 144.220386,\n        \"USDJEP\": 0.840337,\n        \"USDJMD\": 153.623342,\n        \"USDJOD\": 0.70904,\n        \"USDJPY\": 140.34504,\n        \"USDKES\": 122.150385,\n        \"USDKGS\": 84.443304,\n        \"USDKHR\": 4140.000351,\n        \"USDKMF\": 476.503796,\n        \"USDKPW\": 900.009704,\n        \"USDKRW\": 1340.030384,\n        \"USDKWD\": 0.307804,\n        \"USDKYD\": 0.832639,\n        \"USDKZT\": 461.588881,\n        \"USDLAK\": 18450.000349,\n        \"USDLBP\": 822.503779,\n        \"USDLKR\": 367.214979,\n        \"USDLRD\": 154.000348,\n        \"USDLSL\": 17.370382,\n        \"USDLTL\": 2.95274,\n        \"USDLVL\": 0.60489,\n        \"USDLYD\": 4.895039,\n        \"USDMAD\": 10.714504,\n        \"USDMDL\": 19.159763,\n        \"USDMGA\": 4317.000347,\n        \"USDMKD\": 59.390242,\n        \"USDMMK\": 2098.370677,\n        \"USDMNT\": 3413.888481,\n        \"USDMOP\": 8.05051,\n        \"USDMRO\": 356.999828,\n        \"USDMUR\": 43.640379,\n        \"USDMVR\": 15.415039,\n        \"USDMWK\": 1024.000345,\n        \"USDMXN\": 19.440504,\n        \"USDMYR\": 4.553804,\n        \"USDMZN\": 63.830377,\n        \"USDNAD\": 17.370377,\n        \"USDNGN\": 442.660377,\n        \"USDNIO\": 36.000344,\n        \"USDNOK\": 10.19315,\n        \"USDNPR\": 130.57715,\n        \"USDNZD\": 1.625356,\n        \"USDOMR\": 0.384487,\n        \"USDPAB\": 0.99919,\n        \"USDPEN\": 3.80875,\n        \"USDPGK\": 3.520375,\n        \"USDPHP\": 57.207039,\n        \"USDPKR\": 222.450375,\n        \"USDPLN\": 4.55165,\n        \"USDPYG\": 7164.944479,\n        \"USDQAR\": 3.640504,\n        \"USDRON\": 4.786038,\n        \"USDRSD\": 113.406795,\n        \"USDRUB\": 60.850373,\n        \"USDRWF\": 1055,\n        \"USDSAR\": 3.758531,\n        \"USDSBD\": 8.230592,\n        \"USDSCR\": 14.475055,\n        \"USDSDG\": 569.503678,\n        \"USDSEK\": 10.636404,\n        \"USDSGD\": 1.376104,\n        \"USDSHP\": 1.377404,\n        \"USDSLE\": 18.090111,\n        \"USDSLL\": 18025.000338,\n        \"USDSOS\": 568.503664,\n        \"USDSRD\": 30.640504,\n        \"USDSTD\": 20697.981008,\n        \"USDSVC\": 8.742506,\n        \"USDSYP\": 2512.540607,\n        \"USDSZL\": 17.37037,\n        \"USDTHB\": 35.810369,\n        \"USDTJS\": 10.198947,\n        \"USDTMT\": 3.51,\n        \"USDTND\": 3.164504,\n        \"USDTOP\": 2.37235,\n        \"USDTRY\": 18.621304,\n        \"USDTTD\": 6.782272,\n        \"USDTWD\": 31.126304,\n        \"USDTZS\": 2332.000335,\n        \"USDUAH\": 36.902776,\n        \"USDUGX\": 3731.999306,\n        \"USDUYU\": 39.757869,\n        \"USDUZS\": 11220.000334,\n        \"USDVEF\": 977491.687638,\n        \"USDVES\": 9.549504,\n        \"USDVND\": 24807.5,\n        \"USDVUV\": 119.352154,\n        \"USDWST\": 2.75682,\n        \"USDXAF\": 632.287324,\n        \"USDXAG\": 0.047798,\n        \"USDXAU\": 0.000571,\n        \"USDXCD\": 2.70255,\n        \"USDXDR\": 0.762457,\n        \"USDXOF\": 641.503597,\n        \"USDXPF\": 115.650364,\n        \"USDYER\": 250.275037,\n        \"USDZAR\": 17.26037,\n        \"USDZMK\": 9001.203589,\n        \"USDZMW\": 16.652095,\n        \"USDZWL\": 321.999592\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "codes_centrobank(xml)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://www.cbr.ru/scripts/XML_valFull.asp",
+											"protocol": "http",
+											"host": [
+												"www",
+												"cbr",
+												"ru"
+											],
+											"path": [
+												"scripts",
+												"XML_valFull.asp"
+											]
+										},
+										"description": "http://www.cbr.ru/development/SXML/"
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "token",
+														"value": "12312313123",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"from_account\": \"23423424234\",\n    \"to_account\":\"23423423432432\"\n}   ",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://www.cbr.ru/scripts/XML_valFull.asp",
+													"protocol": "http",
+													"host": [
+														"www",
+														"cbr",
+														"ru"
+													],
+													"path": [
+														"scripts",
+														"XML_valFull.asp"
+													]
+												}
+											},
+											"_postman_previewlanguage": "xml",
+											"header": null,
+											"cookie": [],
+											"body": "<?xml version=\"1.0\" encoding=\"windows-1251\"?>\n<Valuta name=\"Foreign Currency Market Lib\">\n    <Item ID=\"R01010\">\n        <Name>Австралийский доллар</Name>\n        <EngName>Australian Dollar</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01010    </ParentCode>\n        <ISO_Num_Code>36</ISO_Num_Code>\n        <ISO_Char_Code>AUD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01015\">\n        <Name>Австрийский шиллинг</Name>\n        <EngName>Austrian Shilling</EngName>\n        <Nominal>1000</Nominal>\n        <ParentCode>R01015    </ParentCode>\n        <ISO_Num_Code>40</ISO_Num_Code>\n        <ISO_Char_Code>ATS</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01020A\">\n        <Name>Азербайджанский манат</Name>\n        <EngName>Azerbaijan Manat</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01020    </ParentCode>\n        <ISO_Num_Code>944</ISO_Num_Code>\n        <ISO_Char_Code>AZN</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01035\">\n        <Name>Фунт стерлингов Соединенного королевства</Name>\n        <EngName>British Pound Sterling</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01035    </ParentCode>\n        <ISO_Num_Code>826</ISO_Num_Code>\n        <ISO_Char_Code>GBP</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01040F\">\n        <Name>Ангольская новая кванза</Name>\n        <EngName>Angolan new Kwanza</EngName>\n        <Nominal>100000</Nominal>\n        <ParentCode>R01040    </ParentCode>\n        <ISO_Num_Code>24</ISO_Num_Code>\n        <ISO_Char_Code>AON</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01060\">\n        <Name>Армянский драм</Name>\n        <EngName>Armenia Dram</EngName>\n        <Nominal>1000</Nominal>\n        <ParentCode>R01060    </ParentCode>\n        <ISO_Num_Code>51</ISO_Num_Code>\n        <ISO_Char_Code>AMD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01090B\">\n        <Name>Белорусский рубль</Name>\n        <EngName>Belarussian Ruble</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01090    </ParentCode>\n        <ISO_Num_Code>933</ISO_Num_Code>\n        <ISO_Char_Code>BYN</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01095\">\n        <Name>Бельгийский франк</Name>\n        <EngName>Belgium Franc</EngName>\n        <Nominal>1000</Nominal>\n        <ParentCode>R01095    </ParentCode>\n        <ISO_Num_Code>56</ISO_Num_Code>\n        <ISO_Char_Code>BEF</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01100\">\n        <Name>Болгарский лев</Name>\n        <EngName>Bulgarian lev</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01100    </ParentCode>\n        <ISO_Num_Code>975</ISO_Num_Code>\n        <ISO_Char_Code>BGN</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01115\">\n        <Name>Бразильский реал</Name>\n        <EngName>Brazil Real</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01115    </ParentCode>\n        <ISO_Num_Code>986</ISO_Num_Code>\n        <ISO_Char_Code>BRL</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01135\">\n        <Name>Венгерский форинт</Name>\n        <EngName>Hungarian Forint</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01135    </ParentCode>\n        <ISO_Num_Code>348</ISO_Num_Code>\n        <ISO_Char_Code>HUF</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01200\">\n        <Name>Гонконгский доллар</Name>\n        <EngName>Hong Kong Dollar</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01200    </ParentCode>\n        <ISO_Num_Code>344</ISO_Num_Code>\n        <ISO_Char_Code>HKD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01205\">\n        <Name>Греческая драхма</Name>\n        <EngName>Greek Drachma</EngName>\n        <Nominal>10000</Nominal>\n        <ParentCode>R01205    </ParentCode>\n        <ISO_Num_Code>300</ISO_Num_Code>\n        <ISO_Char_Code>GRD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01215\">\n        <Name>Датская крона</Name>\n        <EngName>Danish Krone</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01215    </ParentCode>\n        <ISO_Num_Code>208</ISO_Num_Code>\n        <ISO_Char_Code>DKK</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01235\">\n        <Name>Доллар США</Name>\n        <EngName>US Dollar</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01235    </ParentCode>\n        <ISO_Num_Code>840</ISO_Num_Code>\n        <ISO_Char_Code>USD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01239\">\n        <Name>Евро</Name>\n        <EngName>Euro</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01239    </ParentCode>\n        <ISO_Num_Code>978</ISO_Num_Code>\n        <ISO_Char_Code>EUR</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01270\">\n        <Name>Индийская рупия</Name>\n        <EngName>Indian Rupee</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01270    </ParentCode>\n        <ISO_Num_Code>356</ISO_Num_Code>\n        <ISO_Char_Code>INR</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01305\">\n        <Name>Ирландский фунт</Name>\n        <EngName>Irish Pound</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01305    </ParentCode>\n        <ISO_Num_Code>372</ISO_Num_Code>\n        <ISO_Char_Code>IEP</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01310\">\n        <Name>Исландская крона</Name>\n        <EngName>Iceland Krona</EngName>\n        <Nominal>10000</Nominal>\n        <ParentCode>R01310    </ParentCode>\n        <ISO_Num_Code>352</ISO_Num_Code>\n        <ISO_Char_Code>ISK</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01315\">\n        <Name>Испанская песета</Name>\n        <EngName>Spanish Peseta</EngName>\n        <Nominal>10000</Nominal>\n        <ParentCode>R01315    </ParentCode>\n        <ISO_Num_Code>724</ISO_Num_Code>\n        <ISO_Char_Code>ESP</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01325\">\n        <Name>Итальянская лира</Name>\n        <EngName>Italian Lira</EngName>\n        <Nominal>100000</Nominal>\n        <ParentCode>R01325    </ParentCode>\n        <ISO_Num_Code>380</ISO_Num_Code>\n        <ISO_Char_Code>ITL</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01335\">\n        <Name>Казахстанский тенге</Name>\n        <EngName>Kazakhstan Tenge</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01335    </ParentCode>\n        <ISO_Num_Code>398</ISO_Num_Code>\n        <ISO_Char_Code>KZT</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01350\">\n        <Name>Канадский доллар</Name>\n        <EngName>Canadian Dollar</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01350    </ParentCode>\n        <ISO_Num_Code>124</ISO_Num_Code>\n        <ISO_Char_Code>CAD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01370\">\n        <Name>Киргизский сом</Name>\n        <EngName>Kyrgyzstan Som</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01370    </ParentCode>\n        <ISO_Num_Code>417</ISO_Num_Code>\n        <ISO_Char_Code>KGS</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01375\">\n        <Name>Китайский юань</Name>\n        <EngName>China Yuan</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01375    </ParentCode>\n        <ISO_Num_Code>156</ISO_Num_Code>\n        <ISO_Char_Code>CNY</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01390\">\n        <Name>Кувейтский динар</Name>\n        <EngName>Kuwaiti Dinar</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01390    </ParentCode>\n        <ISO_Num_Code>414</ISO_Num_Code>\n        <ISO_Char_Code>KWD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01405\">\n        <Name>Латвийский лат</Name>\n        <EngName>Latvian Lat</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01405    </ParentCode>\n        <ISO_Num_Code>428</ISO_Num_Code>\n        <ISO_Char_Code>LVL</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01420\">\n        <Name>Ливанский фунт</Name>\n        <EngName>Lebanese Pound</EngName>\n        <Nominal>100000</Nominal>\n        <ParentCode>R01420    </ParentCode>\n        <ISO_Num_Code>422</ISO_Num_Code>\n        <ISO_Char_Code>LBP</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01435\">\n        <Name>Литовский лит</Name>\n        <EngName>Lithuanian Lita</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01435    </ParentCode>\n        <ISO_Num_Code>440</ISO_Num_Code>\n        <ISO_Char_Code>LTL</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01436\">\n        <Name>Литовский талон</Name>\n        <EngName>Lithuanian talon</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01435    </ParentCode>\n        <ISO_Num_Code></ISO_Num_Code>\n        <ISO_Char_Code></ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01500\">\n        <Name>Молдавский лей</Name>\n        <EngName>Moldova Lei</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01500    </ParentCode>\n        <ISO_Num_Code>498</ISO_Num_Code>\n        <ISO_Char_Code>MDL</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01510\">\n        <Name>Немецкая марка</Name>\n        <EngName>Deutsche Mark</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01510    </ParentCode>\n        <ISO_Num_Code>276</ISO_Num_Code>\n        <ISO_Char_Code>DEM</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01510A\">\n        <Name>Немецкая марка</Name>\n        <EngName>Deutsche Mark</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01510    </ParentCode>\n        <ISO_Num_Code>280</ISO_Num_Code>\n        <ISO_Char_Code>DEM</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01523\">\n        <Name>Нидерландский гульден</Name>\n        <EngName>Netherlands Gulden</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01523    </ParentCode>\n        <ISO_Num_Code>528</ISO_Num_Code>\n        <ISO_Char_Code>NLG</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01535\">\n        <Name>Норвежская крона</Name>\n        <EngName>Norwegian Krone</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01535    </ParentCode>\n        <ISO_Num_Code>578</ISO_Num_Code>\n        <ISO_Char_Code>NOK</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01565\">\n        <Name>Польский злотый</Name>\n        <EngName>Polish Zloty</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01565    </ParentCode>\n        <ISO_Num_Code>985</ISO_Num_Code>\n        <ISO_Char_Code>PLN</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01570\">\n        <Name>Португальский эскудо</Name>\n        <EngName>Portuguese Escudo</EngName>\n        <Nominal>10000</Nominal>\n        <ParentCode>R01570    </ParentCode>\n        <ISO_Num_Code>620</ISO_Num_Code>\n        <ISO_Char_Code>PTE</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01585\">\n        <Name>Румынский лей</Name>\n        <EngName>Romanian Leu</EngName>\n        <Nominal>10000</Nominal>\n        <ParentCode>R01585    </ParentCode>\n        <ISO_Num_Code>642</ISO_Num_Code>\n        <ISO_Char_Code>ROL</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01585F\">\n        <Name>Румынский лей</Name>\n        <EngName>Romanian Leu</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01585    </ParentCode>\n        <ISO_Num_Code>946</ISO_Num_Code>\n        <ISO_Char_Code>RON</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01589\">\n        <Name>СДР (специальные права заимствования)</Name>\n        <EngName>SDR</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01589    </ParentCode>\n        <ISO_Num_Code>960</ISO_Num_Code>\n        <ISO_Char_Code>XDR</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01625\">\n        <Name>Сингапурский доллар</Name>\n        <EngName>Singapore Dollar</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01625    </ParentCode>\n        <ISO_Num_Code>702</ISO_Num_Code>\n        <ISO_Char_Code>SGD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01665A\">\n        <Name>Суринамский доллар</Name>\n        <EngName>Surinam Dollar</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01665    </ParentCode>\n        <ISO_Num_Code>968</ISO_Num_Code>\n        <ISO_Char_Code>SRD</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01670\">\n        <Name>Таджикский сомони</Name>\n        <EngName>Tajikistan Ruble</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01670    </ParentCode>\n        <ISO_Num_Code>972</ISO_Num_Code>\n        <ISO_Char_Code>TJS</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01670B\">\n        <Name>Таджикский рубл</Name>\n        <EngName>Tajikistan Ruble</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01670    </ParentCode>\n        <ISO_Num_Code>762</ISO_Num_Code>\n        <ISO_Char_Code>TJR</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01700J\">\n        <Name>Турецкая лира</Name>\n        <EngName>Turkish Lira</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01700    </ParentCode>\n        <ISO_Num_Code>949</ISO_Num_Code>\n        <ISO_Char_Code>TRY</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01710\">\n        <Name>Туркменский манат</Name>\n        <EngName>Turkmenistan Manat</EngName>\n        <Nominal>10000</Nominal>\n        <ParentCode>R01710    </ParentCode>\n        <ISO_Num_Code>795</ISO_Num_Code>\n        <ISO_Char_Code>TMM</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01710A\">\n        <Name>Новый туркменский манат</Name>\n        <EngName>New Turkmenistan Manat</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01710    </ParentCode>\n        <ISO_Num_Code>934</ISO_Num_Code>\n        <ISO_Char_Code>TMT</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01717\">\n        <Name>Узбекский сум</Name>\n        <EngName>Uzbekistan Sum</EngName>\n        <Nominal>1000</Nominal>\n        <ParentCode>R01717    </ParentCode>\n        <ISO_Num_Code>860</ISO_Num_Code>\n        <ISO_Char_Code>UZS</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01720\">\n        <Name>Украинская гривна</Name>\n        <EngName>Ukrainian Hryvnia</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01720    </ParentCode>\n        <ISO_Num_Code>980</ISO_Num_Code>\n        <ISO_Char_Code>UAH</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01720A\">\n        <Name>Украинский карбованец</Name>\n        <EngName>Ukrainian Hryvnia</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01720    </ParentCode>\n        <ISO_Num_Code></ISO_Num_Code>\n        <ISO_Char_Code></ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01740\">\n        <Name>Финляндская марка</Name>\n        <EngName>Finnish Marka</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01740    </ParentCode>\n        <ISO_Num_Code>246</ISO_Num_Code>\n        <ISO_Char_Code>FIM</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01750\">\n        <Name>Французский франк</Name>\n        <EngName>French Franc</EngName>\n        <Nominal>1000</Nominal>\n        <ParentCode>R01750    </ParentCode>\n        <ISO_Num_Code>250</ISO_Num_Code>\n        <ISO_Char_Code>FRF</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01760\">\n        <Name>Чешская крона</Name>\n        <EngName>Czech Koruna</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01760    </ParentCode>\n        <ISO_Num_Code>203</ISO_Num_Code>\n        <ISO_Char_Code>CZK</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01770\">\n        <Name>Шведская крона</Name>\n        <EngName>Swedish Krona</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01770    </ParentCode>\n        <ISO_Num_Code>752</ISO_Num_Code>\n        <ISO_Char_Code>SEK</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01775\">\n        <Name>Швейцарский франк</Name>\n        <EngName>Swiss Franc</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01775    </ParentCode>\n        <ISO_Num_Code>756</ISO_Num_Code>\n        <ISO_Char_Code>CHF</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01790\">\n        <Name>ЭКЮ</Name>\n        <EngName>ECU</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01790    </ParentCode>\n        <ISO_Num_Code>954</ISO_Num_Code>\n        <ISO_Char_Code>XEU</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01795\">\n        <Name>Эстонская крона</Name>\n        <EngName>Estonian Kroon</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01795    </ParentCode>\n        <ISO_Num_Code>233</ISO_Num_Code>\n        <ISO_Char_Code>EEK</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01805\">\n        <Name>Югославский новый динар</Name>\n        <EngName>Yugoslavian Dinar</EngName>\n        <Nominal>1</Nominal>\n        <ParentCode>R01804    </ParentCode>\n        <ISO_Num_Code>890</ISO_Num_Code>\n        <ISO_Char_Code>YUN</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01810\">\n        <Name>Южноафриканский рэнд</Name>\n        <EngName>S.African Rand</EngName>\n        <Nominal>10</Nominal>\n        <ParentCode>R01810    </ParentCode>\n        <ISO_Num_Code>710</ISO_Num_Code>\n        <ISO_Char_Code>ZAR</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01815\">\n        <Name>Вон Республики Корея</Name>\n        <EngName>South Korean Won</EngName>\n        <Nominal>1000</Nominal>\n        <ParentCode>R01815    </ParentCode>\n        <ISO_Num_Code>410</ISO_Num_Code>\n        <ISO_Char_Code>KRW</ISO_Char_Code>\n    </Item>\n    <Item ID=\"R01820\">\n        <Name>Японская иена</Name>\n        <EngName>Japanese Yen</EngName>\n        <Nominal>100</Nominal>\n        <ParentCode>R01820    </ParentCode>\n        <ISO_Num_Code>392</ISO_Num_Code>\n        <ISO_Char_Code>JPY</ISO_Char_Code>\n    </Item>\n</Valuta>"
+										}
+									]
+								},
+								{
+									"name": "courses_daily",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "apikey",
+												"value": "k9plIUIKYF8lf7D5TtIjrDoRKlNxQvdY",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://www.cbr-xml-daily.ru/daily_json.js",
+											"protocol": "https",
+											"host": [
+												"www",
+												"cbr-xml-daily",
+												"ru"
+											],
+											"path": [
+												"daily_json.js"
+											]
+										},
+										"description": "http://www.cbr.ru/development/SXML/"
+									},
+									"response": [
+										{
+											"name": "success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "token",
+														"value": "12312313123",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"from_account\": \"23423424234\",\n    \"to_account\":\"23423423432432\"\n}   ",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://www.cbr-xml-daily.ru/daily_json.js",
+													"protocol": "https",
+													"host": [
+														"www",
+														"cbr-xml-daily",
+														"ru"
+													],
+													"path": [
+														"daily_json.js"
+													]
+												}
+											},
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\n    \"Date\": \"2022-11-19T11:30:00+03:00\",\n    \"PreviousDate\": \"2022-11-18T11:30:00+03:00\",\n    \"PreviousURL\": \"//www.cbr-xml-daily.ru/archive/2022/11/18/daily_json.js\",\n    \"Timestamp\": \"2022-11-19T20:00:00+03:00\",\n    \"Valute\": {\n        \"AUD\": {\n            \"ID\": \"R01010\",\n            \"NumCode\": \"036\",\n            \"CharCode\": \"AUD\",\n            \"Nominal\": 1,\n            \"Name\": \"Австралийский доллар\",\n            \"Value\": 40.4748,\n            \"Previous\": 40.5092\n        },\n        \"AZN\": {\n            \"ID\": \"R01020A\",\n            \"NumCode\": \"944\",\n            \"CharCode\": \"AZN\",\n            \"Nominal\": 1,\n            \"Name\": \"Азербайджанский манат\",\n            \"Value\": 35.5142,\n            \"Previous\": 35.5232\n        },\n        \"GBP\": {\n            \"ID\": \"R01035\",\n            \"NumCode\": \"826\",\n            \"CharCode\": \"GBP\",\n            \"Nominal\": 1,\n            \"Name\": \"Фунт стерлингов Соединенного королевства\",\n            \"Value\": 71.1086,\n            \"Previous\": 71.797\n        },\n        \"AMD\": {\n            \"ID\": \"R01060\",\n            \"NumCode\": \"051\",\n            \"CharCode\": \"AMD\",\n            \"Nominal\": 100,\n            \"Name\": \"Армянских драмов\",\n            \"Value\": 15.2772,\n            \"Previous\": 15.268\n        },\n        \"BYN\": {\n            \"ID\": \"R01090B\",\n            \"NumCode\": \"933\",\n            \"CharCode\": \"BYN\",\n            \"Nominal\": 1,\n            \"Name\": \"Белорусский рубль\",\n            \"Value\": 25.0754,\n            \"Previous\": 25.0225\n        },\n        \"BGN\": {\n            \"ID\": \"R01100\",\n            \"NumCode\": \"975\",\n            \"CharCode\": \"BGN\",\n            \"Nominal\": 1,\n            \"Name\": \"Болгарский лев\",\n            \"Value\": 31.853,\n            \"Previous\": 32.1494\n        },\n        \"BRL\": {\n            \"ID\": \"R01115\",\n            \"NumCode\": \"986\",\n            \"CharCode\": \"BRL\",\n            \"Nominal\": 1,\n            \"Name\": \"Бразильский реал\",\n            \"Value\": 11.047,\n            \"Previous\": 11.3512\n        },\n        \"HUF\": {\n            \"ID\": \"R01135\",\n            \"NumCode\": \"348\",\n            \"CharCode\": \"HUF\",\n            \"Nominal\": 100,\n            \"Name\": \"Венгерских форинтов\",\n            \"Value\": 15.2691,\n            \"Previous\": 15.2068\n        },\n        \"HKD\": {\n            \"ID\": \"R01200\",\n            \"NumCode\": \"344\",\n            \"CharCode\": \"HKD\",\n            \"Nominal\": 10,\n            \"Name\": \"Гонконгских долларов\",\n            \"Value\": 77.3234,\n            \"Previous\": 77.2935\n        },\n        \"DKK\": {\n            \"ID\": \"R01215\",\n            \"NumCode\": \"208\",\n            \"CharCode\": \"DKK\",\n            \"Nominal\": 10,\n            \"Name\": \"Датских крон\",\n            \"Value\": 83.7552,\n            \"Previous\": 84.5281\n        },\n        \"USD\": {\n            \"ID\": \"R01235\",\n            \"NumCode\": \"840\",\n            \"CharCode\": \"USD\",\n            \"Nominal\": 1,\n            \"Name\": \"Доллар США\",\n            \"Value\": 60.3741,\n            \"Previous\": 60.3894\n        },\n        \"EUR\": {\n            \"ID\": \"R01239\",\n            \"NumCode\": \"978\",\n            \"CharCode\": \"EUR\",\n            \"Nominal\": 1,\n            \"Name\": \"Евро\",\n            \"Value\": 62.4484,\n            \"Previous\": 62.5712\n        },\n        \"INR\": {\n            \"ID\": \"R01270\",\n            \"NumCode\": \"356\",\n            \"CharCode\": \"INR\",\n            \"Nominal\": 100,\n            \"Name\": \"Индийских рупий\",\n            \"Value\": 74.861,\n            \"Previous\": 73.878\n        },\n        \"KZT\": {\n            \"ID\": \"R01335\",\n            \"NumCode\": \"398\",\n            \"CharCode\": \"KZT\",\n            \"Nominal\": 100,\n            \"Name\": \"Казахстанских тенге\",\n            \"Value\": 13.152,\n            \"Previous\": 13.1467\n        },\n        \"CAD\": {\n            \"ID\": \"R01350\",\n            \"NumCode\": \"124\",\n            \"CharCode\": \"CAD\",\n            \"Nominal\": 1,\n            \"Name\": \"Канадский доллар\",\n            \"Value\": 45.224,\n            \"Previous\": 45.368\n        },\n        \"KGS\": {\n            \"ID\": \"R01370\",\n            \"NumCode\": \"417\",\n            \"CharCode\": \"KGS\",\n            \"Nominal\": 100,\n            \"Name\": \"Киргизских сомов\",\n            \"Value\": 71.4966,\n            \"Previous\": 71.5091\n        },\n        \"CNY\": {\n            \"ID\": \"R01375\",\n            \"NumCode\": \"156\",\n            \"CharCode\": \"CNY\",\n            \"Nominal\": 10,\n            \"Name\": \"Китайских юаней\",\n            \"Value\": 84.7201,\n            \"Previous\": 84.4679\n        },\n        \"MDL\": {\n            \"ID\": \"R01500\",\n            \"NumCode\": \"498\",\n            \"CharCode\": \"MDL\",\n            \"Nominal\": 10,\n            \"Name\": \"Молдавских леев\",\n            \"Value\": 31.5036,\n            \"Previous\": 31.571\n        },\n        \"NOK\": {\n            \"ID\": \"R01535\",\n            \"NumCode\": \"578\",\n            \"CharCode\": \"NOK\",\n            \"Nominal\": 10,\n            \"Name\": \"Норвежских крон\",\n            \"Value\": 59.8036,\n            \"Previous\": 59.5374\n        },\n        \"PLN\": {\n            \"ID\": \"R01565\",\n            \"NumCode\": \"985\",\n            \"CharCode\": \"PLN\",\n            \"Nominal\": 1,\n            \"Name\": \"Польский злотый\",\n            \"Value\": 13.337,\n            \"Previous\": 13.2972\n        },\n        \"RON\": {\n            \"ID\": \"R01585F\",\n            \"NumCode\": \"946\",\n            \"CharCode\": \"RON\",\n            \"Nominal\": 1,\n            \"Name\": \"Румынский лей\",\n            \"Value\": 12.6788,\n            \"Previous\": 12.6762\n        },\n        \"XDR\": {\n            \"ID\": \"R01589\",\n            \"NumCode\": \"960\",\n            \"CharCode\": \"XDR\",\n            \"Nominal\": 1,\n            \"Name\": \"СДР (специальные права заимствования)\",\n            \"Value\": 79.1311,\n            \"Previous\": 79.432\n        },\n        \"SGD\": {\n            \"ID\": \"R01625\",\n            \"NumCode\": \"702\",\n            \"CharCode\": \"SGD\",\n            \"Nominal\": 1,\n            \"Name\": \"Сингапурский доллар\",\n            \"Value\": 43.9916,\n            \"Previous\": 43.9867\n        },\n        \"TJS\": {\n            \"ID\": \"R01670\",\n            \"NumCode\": \"972\",\n            \"CharCode\": \"TJS\",\n            \"Nominal\": 10,\n            \"Name\": \"Таджикских сомони\",\n            \"Value\": 59.1277,\n            \"Previous\": 59.1427\n        },\n        \"TRY\": {\n            \"ID\": \"R01700J\",\n            \"NumCode\": \"949\",\n            \"CharCode\": \"TRY\",\n            \"Nominal\": 10,\n            \"Name\": \"Турецких лир\",\n            \"Value\": 32.437,\n            \"Previous\": 32.4528\n        },\n        \"TMT\": {\n            \"ID\": \"R01710A\",\n            \"NumCode\": \"934\",\n            \"CharCode\": \"TMT\",\n            \"Nominal\": 1,\n            \"Name\": \"Новый туркменский манат\",\n            \"Value\": 17.2497,\n            \"Previous\": 17.2541\n        },\n        \"UZS\": {\n            \"ID\": \"R01717\",\n            \"NumCode\": \"860\",\n            \"CharCode\": \"UZS\",\n            \"Nominal\": 10000,\n            \"Name\": \"Узбекских сумов\",\n            \"Value\": 53.8661,\n            \"Previous\": 53.9926\n        },\n        \"UAH\": {\n            \"ID\": \"R01720\",\n            \"NumCode\": \"980\",\n            \"CharCode\": \"UAH\",\n            \"Nominal\": 10,\n            \"Name\": \"Украинских гривен\",\n            \"Value\": 16.3495,\n            \"Previous\": 16.3747\n        },\n        \"CZK\": {\n            \"ID\": \"R01760\",\n            \"NumCode\": \"203\",\n            \"CharCode\": \"CZK\",\n            \"Nominal\": 10,\n            \"Name\": \"Чешских крон\",\n            \"Value\": 25.8075,\n            \"Previous\": 25.8141\n        },\n        \"SEK\": {\n            \"ID\": \"R01770\",\n            \"NumCode\": \"752\",\n            \"CharCode\": \"SEK\",\n            \"Nominal\": 10,\n            \"Name\": \"Шведских крон\",\n            \"Value\": 56.8709,\n            \"Previous\": 57.5976\n        },\n        \"CHF\": {\n            \"ID\": \"R01775\",\n            \"NumCode\": \"756\",\n            \"CharCode\": \"CHF\",\n            \"Nominal\": 1,\n            \"Name\": \"Швейцарский франк\",\n            \"Value\": 63.4782,\n            \"Previous\": 63.7355\n        },\n        \"ZAR\": {\n            \"ID\": \"R01810\",\n            \"NumCode\": \"710\",\n            \"CharCode\": \"ZAR\",\n            \"Nominal\": 10,\n            \"Name\": \"Южноафриканских рэндов\",\n            \"Value\": 34.7197,\n            \"Previous\": 35.0146\n        },\n        \"KRW\": {\n            \"ID\": \"R01815\",\n            \"NumCode\": \"410\",\n            \"CharCode\": \"KRW\",\n            \"Nominal\": 1000,\n            \"Name\": \"Вон Республики Корея\",\n            \"Value\": 45.0452,\n            \"Previous\": 45.097\n        },\n        \"JPY\": {\n            \"ID\": \"R01820\",\n            \"NumCode\": \"392\",\n            \"CharCode\": \"JPY\",\n            \"Nominal\": 100,\n            \"Name\": \"Японских иен\",\n            \"Value\": 43.0567,\n            \"Previous\": 43.3085\n        }\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "graph_yahoofinance",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"region\": \"US\", \n    \"lang\": \"en-US\", \n    \"period1\": 1668310504, \n    \"period2\": 1668810504, \n    \"includePrePost\": \"false\", \n    \"interval\": \"30m\", \n    \"corsDomain\": \"finance.yahoo.com\", \n    \".tsrc\": \"finance\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://query1.finance.yahoo.com/v8/finance/chart/USDJPY=X",
+											"protocol": "https",
+											"host": [
+												"query1",
+												"finance",
+												"yahoo",
+												"com"
+											],
+											"path": [
+												"v8",
+												"finance",
+												"chart",
+												"USDJPY=X"
+											]
+										},
+										"description": "https://github.com/mxbi/yahoo-finance-api/blob/master/DOCUMENTATION.md"
+									},
+									"response": []
+								},
+								{
+									"name": "graph_apilayer",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "apikey",
+												"value": "{{API_KEY_apilayer}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://api.apilayer.com/currency_data/timeframe?&source=USD&currencies=USD,GBP,AUD&start_date=2021-10-01&end_date=2022-01-01",
+											"protocol": "https",
+											"host": [
+												"api",
+												"apilayer",
+												"com"
+											],
+											"path": [
+												"currency_data",
+												"timeframe"
+											],
+											"query": [
+												{
+													"key": null,
+													"value": null
+												},
+												{
+													"key": "source",
+													"value": "USD"
+												},
+												{
+													"key": "currencies",
+													"value": "USD,GBP,AUD"
+												},
+												{
+													"key": "start_date",
+													"value": "2021-10-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2022-01-01"
+												}
+											]
+										},
+										"description": "[https://apilayer.com/marketplace/currency_data-api](https://apilayer.com/marketplace/currency_data-api)"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "codes_centrobank",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://{{host}}{{port}}/api/cache/codes/centrobank",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{port}}"
+									],
+									"path": [
+										"api",
+										"cache",
+										"codes",
+										"centrobank"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "codes_centrobank",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "api",
+												"value": "12312313123",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3200/api/cache/codes/centrobank",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3200",
+											"path": [
+												"api",
+												"cache",
+												"codes",
+												"centrobank"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "[\n    \"AUD\",\n    \"ATS\",\n    \"AZN\",\n    \"GBP\",\n    \"AON\",\n    \"AMD\",\n    \"BYN\",\n    \"BEF\",\n    \"BGN\",\n    \"BRL\",\n    \"HUF\",\n    \"HKD\",\n    \"GRD\",\n    \"DKK\",\n    \"USD\",\n    \"EUR\",\n    \"INR\",\n    \"IEP\",\n    \"ISK\",\n    \"ESP\",\n    \"ITL\",\n    \"KZT\",\n    \"CAD\",\n    \"KGS\",\n    \"CNY\",\n    \"KWD\",\n    \"LVL\",\n    \"LBP\",\n    \"LTL\",\n    null,\n    \"MDL\",\n    \"DEM\",\n    \"DEM\",\n    \"NLG\",\n    \"NOK\",\n    \"PLN\",\n    \"PTE\",\n    \"ROL\",\n    \"RON\",\n    \"XDR\",\n    \"SGD\",\n    \"SRD\",\n    \"TJS\",\n    \"TJR\",\n    \"TRY\",\n    \"TMM\",\n    \"TMT\",\n    \"UZS\",\n    \"UAH\",\n    null,\n    \"FIM\",\n    \"FRF\",\n    \"CZK\",\n    \"SEK\",\n    \"CHF\",\n    \"XEU\",\n    \"EEK\",\n    \"YUN\",\n    \"ZAR\",\n    \"KRW\",\n    \"JPY\"\n]"
+								}
+							]
+						},
+						{
+							"name": "courses_daily",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://{{host}}{{port}}/api/cache/courses/daily",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{port}}"
+									],
+									"path": [
+										"api",
+										"cache",
+										"courses",
+										"daily"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "courses_daily",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "api",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://{{host}}{{port}}/api/cache/courses/daily",
+											"protocol": "http",
+											"host": [
+												"{{host}}{{port}}"
+											],
+											"path": [
+												"api",
+												"cache",
+												"courses",
+												"daily"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"AUD\": 2428.4880000000003,\n    \"AZN\": 2130.852,\n    \"GBP\": 4266.516,\n    \"AMD\": 9.16632,\n    \"BYN\": 1504.524,\n    \"BGN\": 1911.18,\n    \"BRL\": 662.82,\n    \"HUF\": 9.16146,\n    \"HKD\": 463.94040000000007,\n    \"DKK\": 502.53119999999996,\n    \"USD\": 3622.4459999999995,\n    \"EUR\": 3746.904,\n    \"INR\": 44.9166,\n    \"KZT\": 7.8912,\n    \"CAD\": 2713.44,\n    \"KGS\": 42.89796,\n    \"CNY\": 508.3206000000001,\n    \"MDL\": 189.0216,\n    \"NOK\": 358.8216,\n    \"PLN\": 800.2199999999999,\n    \"RON\": 760.7280000000001,\n    \"XDR\": 4747.866000000001,\n    \"SGD\": 2639.496,\n    \"TJS\": 354.76619999999997,\n    \"TRY\": 194.62199999999996,\n    \"TMT\": 1034.982,\n    \"UZS\": 0.3231966,\n    \"UAH\": 98.097,\n    \"CZK\": 154.845,\n    \"SEK\": 341.2254,\n    \"CHF\": 3808.6920000000005,\n    \"ZAR\": 208.31820000000002,\n    \"KRW\": 2.702712,\n    \"JPY\": 25.83402\n}"
+								}
+							]
+						},
+						{
+							"name": "live_courses_apilayer",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://{{host}}{{port}}/api/cache/courses/apilayer",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{port}}"
+									],
+									"path": [
+										"api",
+										"cache",
+										"courses",
+										"apilayer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "live_courses_apilayer",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "api",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://{{host}}{{port}}/api/cache/courses/apilayer",
+											"protocol": "http",
+											"host": [
+												"{{host}}{{port}}"
+											],
+											"path": [
+												"api",
+												"cache",
+												"courses",
+												"apilayer"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"AED\": 3.673042,\n    \"AFN\": 88.000368,\n    \"ALL\": 113.250403,\n    \"AMD\": 395.176682,\n    \"ANG\": 1.80077,\n    \"AOA\": 511.14255,\n    \"ARS\": 162.843748,\n    \"AUD\": 1.49815,\n    \"AWG\": 1.8,\n    \"AZN\": 1.70397,\n    \"BAM\": 1.88521,\n    \"BBD\": 2.017466,\n    \"BDT\": 102.96955,\n    \"BGN\": 1.894804,\n    \"BHD\": 0.376324,\n    \"BIF\": 2053,\n    \"BMD\": 1,\n    \"BND\": 1.371755,\n    \"BOB\": 6.904496,\n    \"BRL\": 5.382804,\n    \"BSD\": 0.9992,\n    \"BTC\": 0.000059668186,\n    \"BTN\": 81.609643,\n    \"BWP\": 12.943297,\n    \"BYN\": 2.523567,\n    \"BYR\": 19600,\n    \"BZD\": 2.014092,\n    \"CAD\": 1.34095,\n    \"CDF\": 2044.000362,\n    \"CHF\": 0.954788,\n    \"CLF\": 0.034132,\n    \"CLP\": 941.803912,\n    \"CNY\": 7.119904,\n    \"COP\": 4988.83,\n    \"CRC\": 610.040099,\n    \"CUC\": 1,\n    \"CUP\": 26.5,\n    \"CVE\": 106.850394,\n    \"CZK\": 23.58504,\n    \"DJF\": 177.720394,\n    \"DKK\": 7.204504,\n    \"DOP\": 54.503886,\n    \"DZD\": 139.05404,\n    \"EGP\": 24.564013,\n    \"ERN\": 15,\n    \"ETB\": 52.970392,\n    \"EUR\": 0.966604,\n    \"FJD\": 2.23075,\n    \"FKP\": 0.840337,\n    \"GBP\": 0.841149,\n    \"GEL\": 2.720391,\n    \"GGP\": 0.840337,\n    \"GHS\": 14.503858,\n    \"GIP\": 0.840337,\n    \"GMD\": 61.503853,\n    \"GNF\": 8775.000355,\n    \"GTQ\": 7.801763,\n    \"GYD\": 209.049024,\n    \"HKD\": 7.82195,\n    \"HNL\": 24.850389,\n    \"HRK\": 7.275304,\n    \"HTG\": 137.891348,\n    \"HUF\": 393.740388,\n    \"IDR\": 15641.4,\n    \"ILS\": 3.466604,\n    \"IMP\": 0.840337,\n    \"INR\": 81.52015,\n    \"IQD\": 1460,\n    \"IRR\": 42400.000352,\n    \"ISK\": 144.220386,\n    \"JEP\": 0.840337,\n    \"JMD\": 153.623342,\n    \"JOD\": 0.70904,\n    \"JPY\": 140.34504,\n    \"KES\": 122.150385,\n    \"KGS\": 84.443304,\n    \"KHR\": 4140.000351,\n    \"KMF\": 476.503796,\n    \"KPW\": 900.009704,\n    \"KRW\": 1340.030384,\n    \"KWD\": 0.307804,\n    \"KYD\": 0.832639,\n    \"KZT\": 461.588881,\n    \"LAK\": 18450.000349,\n    \"LBP\": 822.503779,\n    \"LKR\": 367.214979,\n    \"LRD\": 154.000348,\n    \"LSL\": 17.370382,\n    \"LTL\": 2.95274,\n    \"LVL\": 0.60489,\n    \"LYD\": 4.895039,\n    \"MAD\": 10.714504,\n    \"MDL\": 19.159763,\n    \"MGA\": 4317.000347,\n    \"MKD\": 59.390242,\n    \"MMK\": 2098.370677,\n    \"MNT\": 3413.888481,\n    \"MOP\": 8.05051,\n    \"MRO\": 356.999828,\n    \"MUR\": 43.640379,\n    \"MVR\": 15.415039,\n    \"MWK\": 1024.000345,\n    \"MXN\": 19.440504,\n    \"MYR\": 4.553804,\n    \"MZN\": 63.830377,\n    \"NAD\": 17.370377,\n    \"NGN\": 442.660377,\n    \"NIO\": 36.000344,\n    \"NOK\": 10.19315,\n    \"NPR\": 130.57715,\n    \"NZD\": 1.625356,\n    \"OMR\": 0.384487,\n    \"PAB\": 0.99919,\n    \"PEN\": 3.80875,\n    \"PGK\": 3.520375,\n    \"PHP\": 57.207039,\n    \"PKR\": 222.450375,\n    \"PLN\": 4.55165,\n    \"PYG\": 7164.944479,\n    \"QAR\": 3.640504,\n    \"RON\": 4.786038,\n    \"RSD\": 113.406795,\n    \"RUB\": 60.850373,\n    \"RWF\": 1055,\n    \"SAR\": 3.758531,\n    \"SBD\": 8.230592,\n    \"SCR\": 14.475055,\n    \"SDG\": 569.503678,\n    \"SEK\": 10.636404,\n    \"SGD\": 1.376104,\n    \"SHP\": 1.377404,\n    \"SLE\": 18.090111,\n    \"SLL\": 18025.000338,\n    \"SOS\": 568.503664,\n    \"SRD\": 30.640504,\n    \"STD\": 20697.981008,\n    \"SVC\": 8.742506,\n    \"SYP\": 2512.540607,\n    \"SZL\": 17.37037,\n    \"THB\": 35.810369,\n    \"TJS\": 10.198947,\n    \"TMT\": 3.51,\n    \"TND\": 3.164504,\n    \"TOP\": 2.37235,\n    \"TRY\": 18.621304,\n    \"TTD\": 6.782272,\n    \"TWD\": 31.126304,\n    \"TZS\": 2332.000335,\n    \"UAH\": 36.902776,\n    \"UGX\": 3731.999306,\n    \"UYU\": 39.757869,\n    \"UZS\": 11220.000334,\n    \"VEF\": 977491.687638,\n    \"VES\": 9.549504,\n    \"VND\": 24807.5,\n    \"VUV\": 119.352154,\n    \"WST\": 2.75682,\n    \"XAF\": 632.287324,\n    \"XAG\": 0.047798,\n    \"XAU\": 0.000571,\n    \"XCD\": 2.70255,\n    \"XDR\": 0.762457,\n    \"XOF\": 641.503597,\n    \"XPF\": 115.650364,\n    \"YER\": 250.275037,\n    \"ZAR\": 17.26037,\n    \"ZMK\": 9001.203589,\n    \"ZMW\": 16.652095,\n    \"ZWL\": 321.999592\n}"
+								}
+							]
+						},
+						{
+							"name": "graph_timeframe_apilayer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "javascript"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{port}}/api/cache/graph/apilayer",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{port}}"
+									],
+									"path": [
+										"api",
+										"cache",
+										"graph",
+										"apilayer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "graph_yahoo",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"period1\": 1668310504, \n    \"period2\": 1668810504, \n    \"interval\": \"30m\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}{{port}}/api/cache/graph/yahoo",
+									"protocol": "http",
+									"host": [
+										"{{host}}{{port}}"
+									],
+									"path": [
+										"api",
+										"cache",
+										"graph",
+										"yahoo"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "live_courses_apilayer",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "api",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://{{host}}{{port}}/api/cache/courses/apilayer",
+											"protocol": "http",
+											"host": [
+												"{{host}}{{port}}"
+											],
+											"path": [
+												"api",
+												"cache",
+												"courses",
+												"apilayer"
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"AED\": 3.673042,\n    \"AFN\": 88.000368,\n    \"ALL\": 113.250403,\n    \"AMD\": 395.176682,\n    \"ANG\": 1.80077,\n    \"AOA\": 511.14255,\n    \"ARS\": 162.843748,\n    \"AUD\": 1.49815,\n    \"AWG\": 1.8,\n    \"AZN\": 1.70397,\n    \"BAM\": 1.88521,\n    \"BBD\": 2.017466,\n    \"BDT\": 102.96955,\n    \"BGN\": 1.894804,\n    \"BHD\": 0.376324,\n    \"BIF\": 2053,\n    \"BMD\": 1,\n    \"BND\": 1.371755,\n    \"BOB\": 6.904496,\n    \"BRL\": 5.382804,\n    \"BSD\": 0.9992,\n    \"BTC\": 0.000059668186,\n    \"BTN\": 81.609643,\n    \"BWP\": 12.943297,\n    \"BYN\": 2.523567,\n    \"BYR\": 19600,\n    \"BZD\": 2.014092,\n    \"CAD\": 1.34095,\n    \"CDF\": 2044.000362,\n    \"CHF\": 0.954788,\n    \"CLF\": 0.034132,\n    \"CLP\": 941.803912,\n    \"CNY\": 7.119904,\n    \"COP\": 4988.83,\n    \"CRC\": 610.040099,\n    \"CUC\": 1,\n    \"CUP\": 26.5,\n    \"CVE\": 106.850394,\n    \"CZK\": 23.58504,\n    \"DJF\": 177.720394,\n    \"DKK\": 7.204504,\n    \"DOP\": 54.503886,\n    \"DZD\": 139.05404,\n    \"EGP\": 24.564013,\n    \"ERN\": 15,\n    \"ETB\": 52.970392,\n    \"EUR\": 0.966604,\n    \"FJD\": 2.23075,\n    \"FKP\": 0.840337,\n    \"GBP\": 0.841149,\n    \"GEL\": 2.720391,\n    \"GGP\": 0.840337,\n    \"GHS\": 14.503858,\n    \"GIP\": 0.840337,\n    \"GMD\": 61.503853,\n    \"GNF\": 8775.000355,\n    \"GTQ\": 7.801763,\n    \"GYD\": 209.049024,\n    \"HKD\": 7.82195,\n    \"HNL\": 24.850389,\n    \"HRK\": 7.275304,\n    \"HTG\": 137.891348,\n    \"HUF\": 393.740388,\n    \"IDR\": 15641.4,\n    \"ILS\": 3.466604,\n    \"IMP\": 0.840337,\n    \"INR\": 81.52015,\n    \"IQD\": 1460,\n    \"IRR\": 42400.000352,\n    \"ISK\": 144.220386,\n    \"JEP\": 0.840337,\n    \"JMD\": 153.623342,\n    \"JOD\": 0.70904,\n    \"JPY\": 140.34504,\n    \"KES\": 122.150385,\n    \"KGS\": 84.443304,\n    \"KHR\": 4140.000351,\n    \"KMF\": 476.503796,\n    \"KPW\": 900.009704,\n    \"KRW\": 1340.030384,\n    \"KWD\": 0.307804,\n    \"KYD\": 0.832639,\n    \"KZT\": 461.588881,\n    \"LAK\": 18450.000349,\n    \"LBP\": 822.503779,\n    \"LKR\": 367.214979,\n    \"LRD\": 154.000348,\n    \"LSL\": 17.370382,\n    \"LTL\": 2.95274,\n    \"LVL\": 0.60489,\n    \"LYD\": 4.895039,\n    \"MAD\": 10.714504,\n    \"MDL\": 19.159763,\n    \"MGA\": 4317.000347,\n    \"MKD\": 59.390242,\n    \"MMK\": 2098.370677,\n    \"MNT\": 3413.888481,\n    \"MOP\": 8.05051,\n    \"MRO\": 356.999828,\n    \"MUR\": 43.640379,\n    \"MVR\": 15.415039,\n    \"MWK\": 1024.000345,\n    \"MXN\": 19.440504,\n    \"MYR\": 4.553804,\n    \"MZN\": 63.830377,\n    \"NAD\": 17.370377,\n    \"NGN\": 442.660377,\n    \"NIO\": 36.000344,\n    \"NOK\": 10.19315,\n    \"NPR\": 130.57715,\n    \"NZD\": 1.625356,\n    \"OMR\": 0.384487,\n    \"PAB\": 0.99919,\n    \"PEN\": 3.80875,\n    \"PGK\": 3.520375,\n    \"PHP\": 57.207039,\n    \"PKR\": 222.450375,\n    \"PLN\": 4.55165,\n    \"PYG\": 7164.944479,\n    \"QAR\": 3.640504,\n    \"RON\": 4.786038,\n    \"RSD\": 113.406795,\n    \"RUB\": 60.850373,\n    \"RWF\": 1055,\n    \"SAR\": 3.758531,\n    \"SBD\": 8.230592,\n    \"SCR\": 14.475055,\n    \"SDG\": 569.503678,\n    \"SEK\": 10.636404,\n    \"SGD\": 1.376104,\n    \"SHP\": 1.377404,\n    \"SLE\": 18.090111,\n    \"SLL\": 18025.000338,\n    \"SOS\": 568.503664,\n    \"SRD\": 30.640504,\n    \"STD\": 20697.981008,\n    \"SVC\": 8.742506,\n    \"SYP\": 2512.540607,\n    \"SZL\": 17.37037,\n    \"THB\": 35.810369,\n    \"TJS\": 10.198947,\n    \"TMT\": 3.51,\n    \"TND\": 3.164504,\n    \"TOP\": 2.37235,\n    \"TRY\": 18.621304,\n    \"TTD\": 6.782272,\n    \"TWD\": 31.126304,\n    \"TZS\": 2332.000335,\n    \"UAH\": 36.902776,\n    \"UGX\": 3731.999306,\n    \"UYU\": 39.757869,\n    \"UZS\": 11220.000334,\n    \"VEF\": 977491.687638,\n    \"VES\": 9.549504,\n    \"VND\": 24807.5,\n    \"VUV\": 119.352154,\n    \"WST\": 2.75682,\n    \"XAF\": 632.287324,\n    \"XAG\": 0.047798,\n    \"XAU\": 0.000571,\n    \"XCD\": 2.70255,\n    \"XDR\": 0.762457,\n    \"XOF\": 641.503597,\n    \"XPF\": 115.650364,\n    \"YER\": 250.275037,\n    \"ZAR\": 17.26037,\n    \"ZMK\": 9001.203589,\n    \"ZMW\": 16.652095,\n    \"ZWL\": 321.999592\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

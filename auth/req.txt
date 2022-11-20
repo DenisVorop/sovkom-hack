@@ -1,0 +1,15 @@
+asyncpg
+fastapi
+uvicorn
+pydantic
+python-multipart
+aioredis
+fastapi_utils
+jwt
+python-jose
+passlib
+bcrypt
+python-dotenv
+httpx
+pydantic[email]
+jinja2

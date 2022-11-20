@@ -1,92 +1,183 @@
-# sovcombank_hakaton2022
 
 
+## Стек бекенд
 
-## Getting started
+- python 3.09-3.11, sanic, fastapi, asyncio, pydantic, asyncpg - для скорости разработки
+- postgres - для хранения транзакций
+- redis - для временного хранения, и кеширования
+- rabbitMq - для очередей (т.к. на нем проще написать mvp, в проде можно заменить на kafka)
+- docker - контейнеры для разделения сервисов
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Стрек фронтенд
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- node:16.31.1 / node:16.18-alpine3.15
+- react ts styled-components redux-toolkit
 
-## Add your files
+### Упрощения:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- Продумал прод вариант для бекенда, но выбрали в начале написать MVP на python, оптимизации логики, чтобы уже можно было все протестировать на frontend функциональность
+
+- Выбран стек python - для скорости (в последствии некоторые сервисы можно переписать на - Go, Rust)
+
+- Вместо socket в начале сделали api, но socket нужен для безпрерывной передачи курсов (чтобы правильно кешировать сессию)
+
+- Убрали email подтверждения из авториазации, добавили заглушки восстановления пароля, т.к. пишем в в ручную авторизацию, = сокращение времени на тестирование
+
+### Коментарий
+
+К сожалению не удалось сделать версию prod backend, по времени ни как не успеть, но были продуманы шаги дальше, такие как
+
+- дальнейшее кеширование графиков и курсов (загрузука пачкой, и отдача)
+- отдача графиков и курсов через socket, и кеширование авторизации
+- система контроля транзакций, lock mutex, и кеширование данных в ОЗУ/redis, + передача транзакций путем очередей rabbitMq/kafka
+- система пополнений, с хренением запросов и видов оплат
+
+
+### Запуск
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/hellohackatons/sovcombank_hakaton2022.git
-git branch -M main
-git push -uf origin main
+docker-compose -f db.yml up -d
+docker-compose -f frontend.yml up -d
+docker-compose -f backend.yml up -d
 ```
 
-## Integrate with your tools
+### Остановка
 
-- [ ] [Set up project integrations](https://gitlab.com/hellohackatons/sovcombank_hakaton2022/-/settings/integrations)
+```
+docker-compose -f frontend.yml down
+docker-compose down
+docker-compose -f txs_mvp.yml down
+docker-compose -f db.yml down
 
-## Collaborate with your team
+```
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### Очистка бд
 
-## Test and Deploy
 
-Use the built-in continuous integration in GitLab.
+```
+docker-compose -f all.yml down ; docker rm sovcombank_postgres ; docker volume rm sovcom_sovcombank_postgres ; 
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+docker-compose -f db.yml up -d
+docker-compose -f backend.yml up -d
+docker-compose -f frontend.yml up -d
+```
 
-***
 
-# Editing this README
+### файл настройки frontend
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+```
+nano /frontend/src/libs/const-path.ts
+```
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### файлы настроек backend
+```
 
-## Name
-Choose a self-explaining name for your project.
+nano .env
+nano auth/.env
+nano auth/settings.py
+nano txs_mvp/app/.env
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+```
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### документация api
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+[https://documenter.getpostman.com/view/23758491/2s8YmSrLCQ](https://documenter.getpostman.com/view/23758491/2s8YmSrLCQ)
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Переменные окружения
+[здесь](https://planetary-eclipse-662194.postman.co/workspace/New-Team-Workspace~822b4ea5-2120-4086-ad04-07cc69fe49b7/environment/23758491-960a68ae-776d-470d-a7ff-d29dc5d5b8d7)[https://planetary-eclipse-662194.postman.co/workspace/New-Team-Workspace~822b4ea5-2120-4086-ad04-07cc69fe49b7/environment/23758491-960a68ae-776d-470d-a7ff-d29dc5d5b8d7)
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+```
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Порты
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+port 3200
+auth_port 3100
+txs_port 3200
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+```
 
-## License
-For open source projects, say how it is licensed.
+### выбраные api
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+#### 1) список кодов валют
+
+- Центробанк для получения Кодов списков валют http://www.cbr.ru/development/SXML/ , https://apilayer.com/marketplace/currency_data-api?_gl=1*xd5nvs*_ga*NjkyOTM5Njk5LjE2Njg4MDQ4OTI.*_ga_HGV43FGGVM*MTY2ODgwNDg5Mi4xLjEuMTY2ODgwNDkwNS40Ny4wLjA.#pricing
+
+#### 2) валюты - apilayer, daily
+
+https://api.apilayer.com/currency_data/live?base=USD&symbols=EUR,GBP
+
+```
+curl -H "apikey: {API-KEY}" -X GET "https://api.apilayer.com/currency_data/live?base=USD&symbols=EUR,GBP"
+```
+
+https://www.cbr-xml-daily.ru/daily_json.js
+
+```
+curl https://www.cbr-xml-daily.ru/daily_json.js
+```
+
+
+#### 3) графики (история, timeframe) - apilayer, yahoo
+
+- https://apilayer.com/, https://apilayer.com/marketplace/currency_data-api - для графика (timeframe), либо для котировок (ограничение 100 запросов в секунду)
+
+```
+/bin/curl -H "apikey: {API-KEY}" -X GET "https://api.apilayer.com/currency_data/timeframe?source=USD&currencies=AUD,JPN&start_date=2021-01-01&end_date=2022-01-01"
+```
+
+- альтернатива для графика -  https://query1.finance.yahoo.com/v8/finance/chart/USDJPY=X, https://github.com/mxbi/yahoo-finance-api/blob/master/DOCUMENTATION.md
+
+```
+curl -d "{'region': 'US', 'lang': 'en-US', 'period1': 1668310504, 'period2': 1668810504, 'includePrePost': 'false', 'interval': '30m', 'corsDomain': 'finance.yahoo.com', '.tsrc': 'finance'}" -X GET https://query1.finance.yahoo.com/v8/finance/chart/USDJPY=X
+```
+
+
+
+
+
+### Доработка
+
+- списки, транзакции
+
+```
+
+transfer a b 500 | 10%
+new_wihdraw 500 (немного недоделано)
+list_withdraw | user, admin
+approve_withdraw | admin
+
+timeframe a b from_d to_d period (кеширование)
+```
+
+### Возможные улучшения:
+
+- widthdrow балансы / оттестировать транзакции
+
+- кеширование графиков (загрузка пачкой)
+
+- socket, подгрузка графика и данных на клиенской часи (для экономии авторизации и коннектов)
+
+- Прод вариант (транзакционая сисистема - Rabbit -> Redis, TasksPool service, AccountMutexLockService) + переписать на go, rust
+
+- Доработка авторизации под множество сессий (контроль сесий), и системы ролей
+
+- оптимизация и батчинг запросов
+
+- фишки
+
+### пункт 9 (дополнительные фишки)
+
+- начали делать неросеть для предсказания, на основе следущих примеров
+
+Ноутбук с получением данных
+
+(https://www.kaggle.com/code/aorews/load-data)[]
+
+Ноутбук с обучением модели и предсказаниями
+
+(https://www.kaggle.com/aorews/autots-all-data)[]
+
+

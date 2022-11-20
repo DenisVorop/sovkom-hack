@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+# api
+  sovcombank_txs:
+    container_name: sovcombank_txs
+    build:
+      context: ./txs_mvp/app/
+      dockerfile: ../../dockers/python/Dockerfile
+    #command: /bin/bash -c "python -m pip install -r /app/requirements.txt --no-cache-dir && python api.py"
+    command: /bin/bash -c "python api.py"
+    restart: unless-stopped
+    ports:
+      - "3300:3000"
+    env_file:
+      - .env
+      - ./txs_mvp/app/.env
+    working_dir: /app
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "1"
+    volumes:
+      - ./txs_mvp/app/:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    #external: true
