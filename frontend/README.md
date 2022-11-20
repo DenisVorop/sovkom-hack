@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+![title](https://user-images.githubusercontent.com/95182405/202887245-2a111487-0013-471e-ad7b-305482a5dee1.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## В ходе проведения хакатона было разработано приложение для проведения операций на финансовом рынке
+### Приложение разработано с помощью библиотеки React и открыто для дальнейшего масштабирования
 
-## Available Scripts
+Были реализованы:
 
-In the project directory, you can run:
+* Функционал регистрации и входа в приложение
+* Ролевая модель технического администратора, с возможностью управлять верификацией пользователей, отслеживать сделки на вывод средств, а также создание новостей для пользователей
+* Функционал для пополнения и выведения средств с рублевого счета
+* Функционал открытия нового счета для проведения операций над выбранной пользователем валютой
+* Отображение сводной информации по имеющимся в портфеле пользователя активам
+* Отображение исторической информации о движении валюты
+* Отображение общей информации о пользователе приложения в удобном и понятном для пользователя виде
+* Функционал торговли, возможность покупать и продавать валюту по рыночному курсу
+* Визуализация графика стоимости валюты/валют за период
+* Возможность самостоятельного отображения различных инструментов для проведения технического анализа и построение графиков с больщим количеством индикаторов
+* Также были расчитаны прогнозные значения на 14 дней вперед на основе исторических данных по валютным парам USDEUR, USDJPY, USDGBP
 
-### `npm start`
+![image 12](https://user-images.githubusercontent.com/95182405/202888080-8d9a1e92-6e70-4891-bb4e-d445db857099.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Приложение для торговли было реализовано в основных цветах Совкомбанка, а также было реализовано две темы – светлая и темная – для удобства пользователей. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Прогноз по валютным парам USDEUR, USDJPY, USDGBP
 
-### `npm test`
+Прогнозные значения для валютных пар были получены для периода с 19 ноября 2022 года по 1 декабря 2022 года
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Вычисления можно посмотреть в [Google Colab](https://drive.google.com/file/d/1f3VtkPPbERkzBDFdyd3I5RiSKsnS3bRk/view?usp=share_link)
 
-### `npm run build`
+![Frame 48095652](https://user-images.githubusercontent.com/95182405/202888295-7ed1719f-ff6f-4a3e-a4c2-f11b4cddcadf.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Экраны приложения
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Frame 48095653](https://user-images.githubusercontent.com/95182405/202888849-926591ad-60f5-4fe7-a56f-bcfd3c631452.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Запуск front-end части
 
-### `npm run eject`
+Запустите команду `npm start` и откройте [http://localhost:3000](http://localhost:3000) для просмотра в браузере
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
