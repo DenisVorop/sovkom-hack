@@ -88,6 +88,9 @@ nano txs_mvp/app/.env
 Переменные окружения
 [здесь](https://planetary-eclipse-662194.postman.co/workspace/New-Team-Workspace~822b4ea5-2120-4086-ad04-07cc69fe49b7/environment/23758491-960a68ae-776d-470d-a7ff-d29dc5d5b8d7)
 
+документация для импорта postman [sovcombank.postman_collection.json](https://gitlab.com/hellohackatons/sovcombank_hakaton2022/-/raw/main/docs/sovcombank.postman_collection.json)
+
+
 ```
 
 
