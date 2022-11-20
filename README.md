@@ -1,4 +1,6 @@
+# README презентация frontend 
 
+(https://gitlab.com/hellohackatons/sovcombank_hakaton2022/-/merge_requests/new?merge_request[source_branch]=hellohackatons-main-patch-17269&merge_request[target_branch]=main&nav_source=webide)[https://gitlab.com/hellohackatons/sovcombank_hakaton2022/-/merge_requests/new?merge_request[source_branch]=hellohackatons-main-patch-17269&merge_request[target_branch]=main&nav_source=webide]
 
 ## Стек бекенд
 
