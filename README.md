@@ -1,3 +1,5 @@
+![title](https://user-images.githubusercontent.com/95182405/202887245-2a111487-0013-471e-ad7b-305482a5dee1.png)
+
 # README презентация frontend 
 
 # [ ЗДЕСЬ➡️ ](https://gitlab.com/hellohackatons/sovcombank_hakaton2022/-/blob/main/frontend/README.md)
@@ -86,7 +88,7 @@ nano txs_mvp/app/.env
 [здесь](https://documenter.getpostman.com/view/23758491/2s8YmSrLCQ)
 
 Переменные окружения
-[здесь](https://planetary-eclipse-662194.postman.co/workspace/New-Team-Workspace~822b4ea5-2120-4086-ad04-07cc69fe49b7/environment/23758491-960a68ae-776d-470d-a7ff-d29dc5d5b8d7)
+(здесь)[https://planetary-eclipse-662194.postman.co/workspace/New-Team-Workspace~822b4ea5-2120-4086-ad04-07cc69fe49b7/environment/23758491-960a68ae-776d-470d-a7ff-d29dc5d5b8d7]
 
 ```
 
