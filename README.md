@@ -4,7 +4,7 @@
 
 cd frontend 
 
-npm i
+npm i \
 npm start
 
 ## backend
