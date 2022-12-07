@@ -22,7 +22,7 @@ const ToastContainer = styled.div<IToastContainer>`
             ? '#FFF1F1'
             : '#B1D0FF'};
     & > div {
-        padding: 2rem 3rem;
+        padding: 1rem 2rem;
     }
 `
 
@@ -82,10 +82,9 @@ const ToastList = styled.ul`
     list-style: none;
     padding: 0;
     position: fixed;
-    bottom: 0;
     z-index: 99999999999;
-    left: 50%;
-    transform: translate(-50%);
+    right: 1%;
+    bottom: 1%;
     li {
         margin: 0;
         padding-bottom: 8px;

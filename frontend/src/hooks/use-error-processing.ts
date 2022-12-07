@@ -13,6 +13,9 @@ export function useErrorProcessing<TSuccess, TError>(successMsg: string, errorMs
                 type: 'danger',
                 content: () => errorMsg,
             })
+            setTimeout(() => {
+                setIsError(false)
+            }, 800)
             if (typeof onError ==='function' ) {
                 onError()
             }
@@ -22,6 +25,9 @@ export function useErrorProcessing<TSuccess, TError>(successMsg: string, errorMs
                 type: 'success',
                 content: () => successMsg,
             })
+            setTimeout(() => {
+                setIsSuccess(false)
+            }, 800)
             if (typeof onSuccess ==='function' ) {
                 onSuccess()
             }
